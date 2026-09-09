@@ -1,91 +1,158 @@
-# persistencia-dados-fs
-# Persistencia de Dados no Sistema de Arquivos (FS)
+# Sistema de Gerenciamento de Livros e Contatos
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Status-Concluido-ffb6c1?style=for-the-badge&labelColor=fff0f5" alt="Status" />
-  <img src="https://img.shields.io/badge/Linguagem-JavaScript/Node.js-ff69b4?style=for-the-badge&labelColor=fff0f5" alt="Linguagem" />
-  <img src="https://img.shields.io/badge/Tema-Rosa_Delicado-ff1493?style=for-the-badge&labelColor=fff0f5" alt="Tema" />
+  <img src="https://img.shields.io/badge/Status-Concluido-ff1493?style=for-the-badge&labelColor=ffe4e1" alt="Status" />
+  <img src="https://img.shields.io/badge/Linguagem-TypeScript-ff69b4?style=for-the-badge&labelColor=ffe4e1" alt="Linguagem" />
+  <img src="https://img.shields.io/badge/Node.js-File_System-db7093?style=for-the-badge&labelColor=ffe4e1" alt="Node.js FS" />
 </div>
 
 <br />
 
 <div align="center">
-  <p><i>Um projeto focado no aprendizado e manipulacao pratica de arquivos no ambiente Node.js utilizando o modulo nativo File System (FS).</i></p>
+  <p><i>Aplicação em TypeScript para modelagem de dados e manipulação de arquivos JSON locais através do módulo nativo FS do Node.js.</i></p>
 </div>
 
 ---
 
-## Sobre o Projeto
+<details>
+<summary><b>CLIQUE PARA EXPANDIR A VISÃO GERAL DO PROJETO</b></summary>
 
-Este repositorio foi desenvolvido para explorar os conceitos essenciais de **Persistencia de Dados em Arquivos Local**. O objetivo principal e demonstrar como criar, ler, atualizar e deletar arquivos (operacoes do ciclo CRUD) diretamente no sistema de arquivos do sistema operacional usando o modulo nativo `fs` (ou `fs/promises`) do Node.js.
+<br />
 
-Com essa abordagem, dados e informacoes da aplicacao permanecem salvos no disco rigido ou SSD, permitindo que a informacao nao seja perdida mesmo apos o encerramento do processo do servidor ou da aplicacao.
+Este repositório contém uma aplicação desenvolvida em **TypeScript** focada na demonstração prática de **Persistência de Dados Local**. O projeto exemplifica como criar modelos fortamente tipados, manipular dados em memória através de métodos de array modernos e persisti-los em arquivos no formato JSON utilizando o módulo nativo `fs` (File System) do Node.js.
 
----
-
-## O Que Foi Feito
-
-Durante o desenvolvimento deste projeto, foram implementadas as seguintes funcionalidades e estruturas:
-
-* **Leitura de Arquivos (Read):** Implementacao de rotas/funcoes para abrir e extrair informacoes de arquivos locais (formatos como JSON, TXT, etc.).
-* **Escrita e Criacao (Create):** Mecanismos para gravar novas informacoes no disco, gerando novos arquivos estruturados.
-* **Atualizacao de Conteudo (Update):** Adicao ou alteracao de dados em arquivos ja existentes sem sobrescrever completamente as informacoes anteriores quando necessario.
-* **Remocao de Arquivos (Delete):** Implementacao de rotas/metodos para apagar arquivos com seguranca do armazenamento local.
-* **Tratamento de Erros e Assincronismo:** Uso de funcoes assincronas (`async/await` ou `Promises`) para garantir que as operacoes de I/O nao bloqueiem a thread principal do sistema.
+</details>
 
 ---
 
-## Tecnologias Utilizadas
+## O Que Foi Desenvolvido
 
-* **Node.js**: Ambiente de execucao JavaScript no lado do servidor.
-* **File System (`fs` / `fs/promises`)**: Modulo nativo do Node.js utilizado para manipular pastas e arquivos.
-* **JSON**: Formato de estruturacao de dados adotado para a persistencia leve de registros.
+<table align="center" width="100%">
+  <tr>
+    <td width="50%">
+      <b>Modelagem e Manipulação de Dados</b>
+      <ul>
+        <li><b>Tipagem Estática:</b> Definição de contratos com `type` para `Livro`, `Amigo`, `Hooby` e `FamosoFavorito`.</li>
+        <li><b>Iteração de Listas:</b> Exibição formatada utilizando `forEach`.</li>
+        <li><b>Filtragem de Registros:</b> Uso do método `filter` para selecionar livros lidos.</li>
+        <li><b>Busca Específica:</b> Localização de itens por atributo usando `find`.</li>
+      </ul>
+    </td>
+    <td width="50%">
+      <b>Operações de Armazenamento Local (FS)</b>
+      <ul>
+        <li><b>Verificação de Diretório:</b> Validação da existência da pasta `data` com `existsSync`.</li>
+        <li><b>Criação de Pastas:</b> Geração dinâmica do diretório usando `mkdirSync`.</li>
+        <li><b>Escrita em Disco:</b> Serialização de dados (`JSON.stringify`) e salvamento com `writeFileSync`.</li>
+        <li><b>Leitura de Dados:</b> Desserialização de arquivos JSON (`JSON.parse`) via `readFileSync`.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## Estrutura do Projeto
+## Tecnologias e Módulos
+
+| Tecnologia / Módulo | Descrição |
+| :--- | :--- |
+| **TypeScript** | Linguagem principal do projeto, fornecendo tipagem estática e segurança de código. |
+| **Node.js (`fs`)** | Módulo nativo responsável pelas operações síncronas no sistema de arquivos. |
+| **JSON** | Formato de dados adotado para a estruturação do arquivo de persistência. |
+
+---
+
+<details>
+<summary><b>CLIQUE PARA VISUALIZAR A ESTRUTURA DO PROJETO</b></summary>
 
 ```text
-persistencia-dados-fs/
-├── data/              <-- Diretorio reservado para armazenamento dos arquivos persisitidos
-├── src/               <-- Codigo fonte da aplicacao contendo as rotas e manipuladores do FS
-├── package.json       <-- Dependencias e scripts da aplicacao
-└── README.md          <-- Documentacao do projeto
+.
+├── data/
+│   └── livros.json       <-- Arquivo JSON gerado automaticamente com os dados salvos
+├── src/
+│   └── index.ts          <-- Código-fonte principal com os tipos e manipuladores do FS
+├── package.json          <-- Dependências e scripts de execução
+├── tsconfig.json         <-- Configurações do compilador TypeScript
+└── README.md             <-- Documentação técnica do projeto
+```
+
+</details>
+
+---
+
+## Exemplo do JSON Gerado
+
+Quando o script é executado, os dados salvos em `data/livros.json` seguem a estrutura formatada abaixo:
+
+```json
+[
+  {
+    "titulo": "O Senhor dos Anéis",
+    "autor": "J.R.R. Tolkien",
+    "genero": "Fantasia",
+    "ano": 1954,
+    "lido": true
+  },
+  {
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "genero": "Ficção Científica",
+    "ano": 1948,
+    "lido": false
+  },
+  {
+    "titulo": "O Pequeno Príncipe",
+    "autor": "Antoine de Saint-Exupéry",
+    "ano": 1943,
+    "lido": true
+  }
+]
 ```
 
 ---
 
-## Como Executar o Projeto
+## Guia de Execução
 
-### Pré-requisitos
-Para executar o projeto localmente, certifique-se de ter instalado em sua maquina:
-* **Node.js** (versao 14 ou superior)
-* **Git**
+<details>
+<summary><b>PASSO 1: Pré-requisitos</b></summary>
 
-### Passo a Passo
+<br />
 
-1. **Clonar o repositório:**
-   ```bash
-   git clone https://github.com/rufinoannabeatriz9-cyber/persistencia-dados-fs.git
-   ```
+Certifique-se de ter instalado em seu ambiente:
+* **Node.js** (versão 14 ou superior)
+* **npm** ou **yarn**
+* **ts-node** (para execução direta de arquivos TypeScript)
 
-2. **Acessar a pasta do projeto:**
-   ```bash
-   cd persistencia-dados-fs
-   ```
+</details>
 
-3. **Instalar as dependencias (se aplicavel):**
-   ```bash
-   npm install
-   ```
+<details>
+<summary><b>PASSO 2: Instalar Dependências</b></summary>
 
-4. **Executar a aplicacao:**
-   ```bash
-   npm start
-   ```
+```bash
+# Instalar dependências do projeto
+npm install
+
+# Caso precise instalar o ts-node globalmente/localmente para rodar o script
+npm install -D ts-node typescript @types/node
+```
+
+</details>
+
+<details>
+<summary><b>PASSO 3: Executar o Script</b></summary>
+
+```bash
+# Execução direta com ts-node
+npx ts-node src/index.ts
+
+# Ou executando o script configurado no package.json
+npm start
+```
+
+</details>
 
 ---
 
 <div align="center">
-  <p>Desenvolvido por <b>Anna Beatriz Rufino</b></p>
-</div>
+  <br />
+  <p><b>Desenvolvido par
